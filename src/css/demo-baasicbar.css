@@ -26,10 +26,22 @@
     font-size: 30px;
     line-height: 1;
     border-radius: 2px;
-    width: 200px;
+    width: 150px;
 }
 
 .container input.date {
-    width: 300px;
+    width: 270px;
+}
+
+.container select {
+    ext-transform: none;
+    margin-left: 10px;
+    height: 43px;
+    width: 100px;
+}
+
+div.warning p {
+    text-align: center;
+    font-size: 12px;
 }
 

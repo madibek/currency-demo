@@ -5,26 +5,45 @@
     angular.module('currencyDemo', [])
     .controller('MainController', ['$scope', '$http',
         function($scope, $http) {
+
+            $scope.currencies = [
+                {
+                    name: "Теңге",
+                    code: "KZT"
+                },
+                {
+                    name: "Доллар",
+                    code: "USD"
+                },
+                {
+                    name: "Рубль",
+                    code: "RUB"
+                }
+            ];
+            $scope.fromCode = $scope.currencies[1];
+            $scope.toCode = $scope.currencies[0];
             $scope.currencyHistory = [];
             $scope.isLoading = false;
             $scope.data = {
                 amount: 1,
-                fromCode: "USD",
-                toCode: "KZT",
-                date: new Date(),
-                result: ""
+                fromCode: $scope.fromCode.code,
+                toCode: $scope.toCode.code,
+                date: new Date()
+            };
+
+            $scope.update = function() {
+                $scope.data.fromCode = $scope.fromCode.code;
+                $scope.data.toCode = $scope.toCode.code;
             };
 
             $scope.submitForm = function() {
-                console.log("posting data....");
-                console.log($scope.data);
                 var url = path +
                     formatDate($scope.data.date) +
                     "/" + $scope.data.fromCode +
                     "/" + $scope.data.toCode;
                 $http.get(url)
                     .then(function(response) {
-                        $scope.data.result = response.data;
+                        $scope.data.result = response.data * $scope.data.amount;
                         var historyData = Object.assign({}, $scope.data);
                         $scope.currencyHistory.push(historyData);
                     });

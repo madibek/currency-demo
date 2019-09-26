@@ -17,16 +17,25 @@
                 <div>
                     <form name="currencyConvertFrom" novalidate action="#">
                         <input class="currency" type="number" min="1" ng-model="data.amount" required>
-                        <input class="date" type="date" ng-model="data.date"><br><br>
-                        <input class="currency" type="text" ng-model="data.result"><br><br>
-                        <button type="submit" ng-click="submitForm()">РАССЧИТАТЬ</button>
+                        <select ng-options="currency as currency.name for currency in currencies"
+                                ng-model="fromCode" ng-change="update()">{{currency.name}}</select>
+                        <br><br>
+                        <span>На дату</span><br>
+                        <input class="date" min="2013-06-01" type="date" ng-model="data.date"><br><br>
+                        <input class="currency" type="text" ng-model="data.result">
+                        <select ng-options="currency as currency.name for currency in currencies"
+                                ng-model="toCode" ng-change="update()">{{currency.name}}</select>
+                        <br><br>
+                        <button type="submit" ng-click="submitForm()" style="width: 265px">РАССЧИТАТЬ</button>
                     </form>
                 </div>
-                <h3>History</h3>
+                <br>
+                <h3>Результаты</h3>
                 <div class="" ng-repeat="history in currencyHistory track by $index">
                     <p>{{$index + 1}}. {{history.amount}} {{history.fromCode}} = {{history.result | number: 2}} {{history.toCode}}  по курсу на {{history.date | date: 'dd.MM.yyyy'}}</p>
                 </div>
             </div>
+
             <div ng-show="isLoading" class="overlay">
                 <span class="loader" title="Loading&hellip;"></span>
             </div>
@@ -36,6 +45,10 @@
                 <h3>Курс валют приложение на AngularJS</h3>
             </div>
         </div>
+    </div>
+
+    <div class="warning">
+        <p>* История сохранена (теңге) до 01.06.2013 на сайте <a href="http://currencies.apps.grandtrunk.net" target="_blank">Historical currency converter web service</a></p>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
