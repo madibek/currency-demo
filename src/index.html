@@ -2,7 +2,7 @@
 <html ng-app="currencyDemo">
 <head>
     <meta charset="utf-8"/>
-    <title>Currency demo with AngularJS</title>
+    <title>Курс валют приложение на AngularJS</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/demo-base.css">
     <link rel="stylesheet" href="css/demo-baasicbar.css">
@@ -12,25 +12,28 @@
     <div class="container">
         <div>
 
-            <div>
+            <h3>Курс валют</h3>
+            <div ng-controller="MainController">
                 <div>
-                    <form name="currencyConvertFrom" action="#" ng-controller="MainController">
-                        <input type="number" min="1" ng-model="data.numberVal"><br>
-                        <input type="date" ng-model="data.date"><br>
-                        <input type="text" ng-model="data.result"><br>
-                        <button type="submit" ng-click="submitForm()">GET</button>
+                    <form name="currencyConvertFrom" novalidate action="#">
+                        <input class="currency" type="number" min="1" ng-model="data.amount" required>
+                        <input class="date" type="date" ng-model="data.date"><br><br>
+                        <input class="currency" type="text" ng-model="data.result"><br><br>
+                        <button type="submit" ng-click="submitForm()">РАССЧИТАТЬ</button>
                     </form>
                 </div>
-                <p class="">result</p>
+                <h3>History</h3>
+                <div class="" ng-repeat="history in currencyHistory track by $index">
+                    <p>{{$index + 1}}. {{history.amount}} {{history.fromCode}} = {{history.result | number: 2}} {{history.toCode}}  по курсу на {{history.date | date: 'dd.MM.yyyy'}}</p>
+                </div>
             </div>
             <div ng-show="isLoading" class="overlay">
                 <span class="loader" title="Loading&hellip;"></span>
             </div>
         </div>
-        <!-- Baasic bar -->
         <div class="baasicbar">
             <div class="baasicbar__content">
-                <h3>Currency demo with AngularJS</h3>
+                <h3>Курс валют приложение на AngularJS</h3>
             </div>
         </div>
     </div>

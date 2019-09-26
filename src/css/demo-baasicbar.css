@@ -13,45 +13,23 @@
 .baasicbar__content {
     overflow: hidden;
 }
-.baasicbar__logo {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 2.5%;
-    width: 240px;
-    display: block;
-    float: left;
-    background: rgba(255,255,255,0);
-    -webkit-transition: background .2s ease-in-out;
-    transition: background .2s ease-in-out;
+
+.baasicbar__content h3 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 30px 0px 30px 0px;
 }
-.baasicbar__logo:hover,
-.baasicbar__logo:focus,
-.baasicbar__logo:active {
-    background: rgba(255,255,255,0.2);
+
+.container input.currency, input.date {
+    height: 52px;
+    padding: 0px 10px;
+    font-size: 30px;
+    line-height: 1;
+    border-radius: 2px;
+    width: 200px;
 }
-.baasicbar__techlist {
-    width: 40%;
-    padding-top: 12px;
-    padding-right: 2.5%;
-    float: right;
-    overflow: hidden;
-    margin-bottom: 0;
+
+.container input.date {
+    width: 300px;
 }
-.baasicbar__tech {
-    float: right;
-    list-style: none;
-    display: inline-block;
-    margin-left: 0;
-    padding-left: 0;
-    margin-right: .5em;
-}
-.baasicbar__tech__link {
-    opacity: 0.6;
-    -webkit-transition: opacity .2s ease-in-out;
-    transition: opacity .2s ease-in-out;
-}
-.baasicbar__tech__link:hover,
-.baasicbar__tech__link:focus,
-.baasicbar__tech__link:active {
-    opacity: 1;
-}
+
